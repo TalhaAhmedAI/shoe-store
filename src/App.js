@@ -17,14 +17,16 @@ function App() {
   return (
     <div className="App">
       <h1>Products</h1>
-      {products.map((product) => (
-        <div>
-          <h3>{product.name}</h3>
-          <h4>{product.cost}</h4>
-          <img src={product.image} alt={product.name} />
-          <button>Add to Cart</button>
-        </div>
-      ))}
+      <div class="products">
+        {products.map((product) => (
+          <div>
+            <h3>{product.name}</h3>
+            <h4>{product.cost}</h4>
+            <img src={product.image} alt={product.name} />
+            <button>Add to Cart</button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
