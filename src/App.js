@@ -17,9 +17,9 @@ function App() {
   return (
     <div className="App">
       <h1>Products</h1>
-      <div class="products">
-        {products.map((product) => (
-          <div>
+      <div className="products">
+        {products.map((product, index) => (
+          <div className="product" key={index}>
             <h3>{product.name}</h3>
             <h4>{product.cost}</h4>
             <img src={product.image} alt={product.name} />

@@ -45,3 +45,7 @@
 .products img {
   width: 100%;
 }
+
+.product {
+  padding: 40px;
+}
