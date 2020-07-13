@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Products from "./products";
 import "./App.css";
 
 const PAGE_PRODUCTS = "products";
@@ -7,22 +8,6 @@ const PAGE_CART = "cart";
 function App() {
   const [cart, setCart] = useState([]);
   const [page, setPage] = useState(PAGE_PRODUCTS);
-  const [products] = useState([
-    {
-      name: "AA Battery",
-      cost: "$2.99",
-      image: "https://tinyurl.com/y8wnrymv",
-    },
-    {
-      name: "Blanket",
-      cost: "$19.99",
-      image: "https://tinyurl.com/y7s5krpw",
-    },
-  ]);
-
-  const addToCart = (product) => {
-    setCart([...cart, { ...product }]);
-  };
 
   const removeFromCart = (productToRemove) => {
     setCart(cart.filter((product) => product !== productToRemove));
@@ -32,21 +17,9 @@ function App() {
     setPage(nextPage);
   };
 
-  const renderProducts = () => (
-    <>
-      <h1>Products</h1>
-      <div className="products">
-        {products.map((product, index) => (
-          <div className="product" key={index}>
-            <h3>{product.name}</h3>
-            <h4>{product.cost}</h4>
-            <img src={product.image} alt={product.name} />
-            <button onClick={() => addToCart(product)}>Add to Cart</button>
-          </div>
-        ))}
-      </div>
-    </>
-  );
+  const addToCart = (product) => {
+    setCart([...cart, { ...product }]);
+  };
 
   const renderCart = () => (
     <>
@@ -73,7 +46,7 @@ function App() {
         </button>
         <button onClick={() => navigateTo(PAGE_PRODUCTS)}>View Products</button>
       </header>
-      {page === PAGE_PRODUCTS && renderProducts()}
+      {page === PAGE_PRODUCTS && <Products addToCart={addToCart} />}
       {page === PAGE_CART && renderCart()}
     </div>
   );
