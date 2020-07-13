@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [products] = useState([
+    {
+      name: "AA Battery",
+      cost: "$2.99",
+      image: "https://tinyurl.com/y8wnrymv",
+    },
+    {
+      name: "Blanket",
+      cost: "$19.99",
+      image: "https://tinyurl.com/y7s5krpw",
+    },
+  ]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Products</h1>
+      {products.map((product) => (
+        <div>
+          <h3>{product.name}</h3>
+          <h4>{product.cost}</h4>
+          <img src={product.image} alt={product.name} />
+          <button>Add to Cart</button>
+        </div>
+      ))}
     </div>
   );
 }
