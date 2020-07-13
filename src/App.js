@@ -3,6 +3,7 @@ import "./App.css";
 
 function App() {
   const [cart, setCart] = useState([]);
+  const [page, setPage] = useState("");
   const [products] = useState([
     {
       name: "AA Battery",
@@ -20,11 +21,9 @@ function App() {
     console.log("We are in add to cart");
     setCart([...cart, product]);
   };
-  return (
-    <div className="App">
-      <header>
-        <button>Add to cart ({cart.length})</button>
-      </header>
+
+  const renderProducts = () => (
+    <>
       <h1>Products</h1>
       <div className="products">
         {products.map((product, index) => (
@@ -36,6 +35,14 @@ function App() {
           </div>
         ))}
       </div>
+    </>
+  );
+  return (
+    <div className="App">
+      <header>
+        <button>Add to cart ({cart.length})</button>
+      </header>
+      {renderProducts()}
     </div>
   );
 }
