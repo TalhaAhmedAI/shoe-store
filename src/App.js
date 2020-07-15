@@ -32,6 +32,7 @@ function App() {
             path="cart"
             element={<Cart cart={cart} removeFromCart={removeFromCart} />}
           />
+          <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
       </Router>
     </div>
